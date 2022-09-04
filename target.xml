@@ -1,0 +1,31 @@
+<employees>
+    <employee id="1">
+        <name>Art</name>
+        <department>Sales</department>
+        <phone>9787988412</phone>
+        <new>New tag</new>
+        <address>
+            <flat>new flat</flat>
+            <landmark>Near Shop</landmark>
+        </address>
+    </employee>
+    <employee id="2">
+        <name>Prakash</name>
+        <department>Support</department>
+        <phone>9787086086</phone>
+        <address>
+            <flat>old flat</flat>
+            <landmark>Near temple</landmark>
+        </address>
+    </employee>
+    <employee id="3">
+        <name>Raj</name>
+        <department>QA</department>
+        <phone>8612123434</phone>
+        <address>
+            <flat>medium flat</flat>
+            <landmark>Near bus stop</landmark>
+        </address>
+    </employee>
+    <final>dummy</final>
+</employees>
