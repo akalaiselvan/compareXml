@@ -27,9 +27,40 @@ public class CompareXml {
         List<String> source=getTags(sourceList);
         List<String> target=getTags(targetList);
 
-        System.out.println(compareTags(source,target));
+//        System.out.println(compareTags(source,target));
+        compareXmlFiles(source,target);
 
     }
+
+    @SuppressWarnings("unchecked")
+    private static void compareXmlFiles(List<String> source, List<String> target) {
+        JSONObject jsonObject=new JSONObject();
+
+        jsonObject.put("sourceTagCount",source.size());
+        jsonObject.put("targetTagCount",target.size());
+        jsonObject.put("isEqual",source.equals(target));
+
+
+        if (!source.equals(target)){
+            target.removeAll(source);
+            jsonObject.put("mismatchCount",target.size());
+            jsonObject.put("mismatchedTags",target);
+        }
+
+        System.out.println(jsonObject);
+    }
+
+    private static List<String> getTags(NodeList list){
+        List<String> tags=new ArrayList<String>();
+        for (int i=0;i<list.getLength();i++){
+            Node node=list.item(i);
+            if (node.getNodeType()==Node.ELEMENT_NODE){
+                tags.add(node.getNodeName());
+            }
+        }
+        return tags;
+    }
+
 
     @SuppressWarnings("unchecked")
     private static JSONObject compareTags(List<String> source, List<String> target) {
@@ -60,14 +91,4 @@ public class CompareXml {
         return jsonObject;
     }
 
-    private static List<String> getTags(NodeList list){
-        List<String> tags=new ArrayList<String>();
-        for (int i=0;i<list.getLength();i++){
-            Node node=list.item(i);
-            if (node.getNodeType()==Node.ELEMENT_NODE){
-                tags.add(node.getNodeName());
-            }
-        }
-        return tags;
-    }
 }
